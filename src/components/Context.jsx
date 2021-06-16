@@ -26,7 +26,7 @@ const Provider = (props) => {
     const [posts, setPosts] = useState([
         {
             id: 0,
-            title: '',
+            title: 'Hello',
             img: '',
             likes: 0,
             comments: {

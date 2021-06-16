@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Provider from './components/Context';
 import Posts from './components/Posts';
 import Upload from './components/Upload';
@@ -13,12 +14,15 @@ import {
 function App() {
   return (
     <Provider>
-      <Router>
-        <Switch>
-          <Route path='/' component={ Posts } />
-          <Route path='/Upload' component={ Upload } />
-        </Switch>
-      </Router>
+      <div className='App'>
+
+        <Router>
+          <Switch>
+            <Route path='/' component={ Posts } />
+            {/* <Route path='/Upload' component={ Upload } /> */}
+          </Switch>
+        </Router>
+      </div>
     </Provider>
   );
 }
