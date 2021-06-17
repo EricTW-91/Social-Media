@@ -23,28 +23,37 @@ const reducer = (action, posts) => {
 const Provider = (props) => {
     // const data = localStorage.getItem('posts');
 
-    const [posts, setPosts] = useState([
+    const [users, setUsers] = useState([
         {
-            id: 0,
-            title: 'Hello',
-            img: '',
-            likes: 0,
-            comments: {
-                id: 0,
-                name: '',
-                comment: ''
-            },
-
+            id: 1,
+            userName: '',
+            password: '',
+            posts: [
+                {
+                    id: '',
+                    title: 'Hello',
+                    time: '',
+                    img: '',
+                    likeStatus: false,
+                    comments: [
+                        {
+                            id: '',
+                            time: '',
+                            comment: ''
+                        },
+                    ]
+                }
+            ]
         }
     ])
 
     const dispatch = (action) => {
-        setPosts((posts) => reducer(action, posts))
+        setUsers((posts) => reducer(action, posts))
     }
 
     return (
         <Context.Provider value={{
-            posts,
+            users,
             dispatch
         }}>
             {props.children}

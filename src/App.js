@@ -16,12 +16,13 @@ function App() {
     <Provider>
       <div className='App'>
 
-        <Router>
+        <Upload />
+        {/* <Router>
           <Switch>
             <Route path='/' component={ Posts } />
-            {/* <Route path='/Upload' component={ Upload } /> */}
+            <Route path='/Upload' component={ Upload } />
           </Switch>
-        </Router>
+        </Router> */}
       </div>
     </Provider>
   );
