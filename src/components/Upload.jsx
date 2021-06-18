@@ -59,7 +59,10 @@ const Upload = () => {
 
     return (
         <>
-            <Form onSubmit={handleSubmit} style={{height:'800px', width: '500px', margin: '5vh auto'}}>
+            <Form
+                className='postUpload'
+                onSubmit={handleSubmit}
+            >
                 <Form.Group controlId='inputTitle'>
                     <Form.Label>Title of your post:</Form.Label>
                     <Form.Control
@@ -93,7 +96,7 @@ const Upload = () => {
                         </div>
                     </div>
                 )}
-                <Button type='submit'>Submit</Button>
+                <Button type='submit'>Upload</Button>
             </Form>
         </>
      );
