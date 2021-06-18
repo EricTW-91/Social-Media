@@ -1,28 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Provider from './components/Context';
-import Posts from './components/Posts';
+import Home from './components/Home';
 import Upload from './components/Upload';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 
 function App() {
-  return (
+  return(
     <Provider>
-      <div className='App'>
-
-        <Router>
-          <Switch>
-            <Route path='/' component={ Posts } />
-            {/* <Route path='/Upload' component={ Upload } /> */}
-          </Switch>
+      <Router>
+            <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route path='/Upload' component={Upload}/>
+            </Switch>
         </Router>
-      </div>
     </Provider>
   );
 }
