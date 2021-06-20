@@ -4,6 +4,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import Posts from './Posts';
 import { Tabs, Tab } from 'react-bootstrap';
+import './Home.scss';
 
 const Home = () => {
     const { login } = useContext(Context);

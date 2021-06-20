@@ -63,20 +63,10 @@ const Upload = () => {
                 className='postUpload'
                 onSubmit={handleSubmit}
             >
-                <Form.Group controlId='inputTitle'>
-                    <Form.Label>Title of your post:</Form.Label>
-                    <Form.Control
-                        name='title'
-                        type='text'
-                        size='sm'
-                        onChange={handleOnChange}
-                    ></Form.Control>
-                </Form.Group>
                 {content.img === '' ? (
-                    <Form.Group controlId='inputImage'>
+                    <Form.Group className='file_form' controlId='inputImage'>
                         <Form.File
                             name='img'
-                            label='Upload the image here:'
                             onChange={handleOnChange}
                         ></Form.File>
                     </Form.Group>
@@ -96,6 +86,17 @@ const Upload = () => {
                         </div>
                     </div>
                 )}
+                <Form.Group controlId='inputTitle'>
+                    <h1>{ login.user.userName }</h1>
+                    <Form.Control
+                        name='title'
+                        as='textarea'
+                        rows={8}
+                        size='sm'
+                        placeholder='Say something here...'
+                        onChange={handleOnChange}
+                    ></Form.Control>
+                </Form.Group>
                 <Button type='submit'>Upload</Button>
             </Form>
         </>
