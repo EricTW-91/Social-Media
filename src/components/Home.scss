@@ -1,0 +1,25 @@
+.nav-tabs {
+  margin: 5vh auto 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.tab-content {
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.nav-tabs,
+.tab-content {
+  width: 80%;
+}
+
+.tab-pane {
+  padding-top: 5vh;
+}

@@ -59,21 +59,14 @@ const Upload = () => {
 
     return (
         <>
-            <Form onSubmit={handleSubmit} style={{height:'800px', width: '500px', margin: '5vh auto'}}>
-                <Form.Group controlId='inputTitle'>
-                    <Form.Label>Title of your post:</Form.Label>
-                    <Form.Control
-                        name='title'
-                        type='text'
-                        size='sm'
-                        onChange={handleOnChange}
-                    ></Form.Control>
-                </Form.Group>
+            <Form
+                className='postUpload'
+                onSubmit={handleSubmit}
+            >
                 {content.img === '' ? (
-                    <Form.Group controlId='inputImage'>
+                    <Form.Group className='file_form' controlId='inputImage'>
                         <Form.File
                             name='img'
-                            label='Upload the image here:'
                             onChange={handleOnChange}
                         ></Form.File>
                     </Form.Group>
@@ -93,7 +86,18 @@ const Upload = () => {
                         </div>
                     </div>
                 )}
-                <Button type='submit'>Submit</Button>
+                <Form.Group controlId='inputTitle'>
+                    <h1>{ login.user.userName }</h1>
+                    <Form.Control
+                        name='title'
+                        as='textarea'
+                        rows={8}
+                        size='sm'
+                        placeholder='Say something here...'
+                        onChange={handleOnChange}
+                    ></Form.Control>
+                </Form.Group>
+                <Button type='submit'>Upload</Button>
             </Form>
         </>
      );

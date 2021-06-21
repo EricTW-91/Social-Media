@@ -26,46 +26,25 @@ const Provider = (props) => {
     const [users, setUsers] = useState([
         {
             id: '1',
-            userName: 'Eric',
-            email: '123@123.123',
-            password: '123',
+            userName: 'Administration',
+            email: 'admin@admin',
+            password: '123456',
+            avatar: '',
             posts: [
-                {
-                    id: '',
-                    title: 'Hello',
-                    time: '',
-                    img: '',
-                    likeStatus: false,
-                    comments: [
-                        {
-                            id: '',
-                            time: '',
-                            comment: ''
-                        },
-                    ]
-                }
-            ]
-        },
-        {
-            id: '2',
-            userName: 'Carlos',
-            email: '321@321.321',
-            password: '321',
-            posts: [
-                {
-                    id: '',
-                    title: 'Hello',
-                    time: '',
-                    img: '',
-                    likeStatus: false,
-                    comments: [
-                        {
-                            id: '',
-                            time: '',
-                            comment: ''
-                        },
-                    ]
-                }
+                // {
+                //     id: '',
+                //     title: 'Hello',
+                //     time: '',
+                //     img: '',
+                //     likeStatus: false,
+                //     comments: [
+                //         {
+                //             id: '',
+                //             time: '',
+                //             comment: ''
+                //         },
+                //     ]
+                // }
             ]
         }
     ])
