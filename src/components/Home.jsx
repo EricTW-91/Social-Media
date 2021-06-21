@@ -9,6 +9,8 @@ import './Home.scss';
 const Home = () => {
     const { login } = useContext(Context);
 
+    console.log(login.status)
+
     return !login.status ? (
         <Tabs>
             <Tab eventKey='login' title='Login'>
