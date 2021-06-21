@@ -1,0 +1,34 @@
+.imgContainer {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  img {
+    transition: 0.5s ease;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    display: block;
+    backface-visibility: hidden;
+  }
+  .middle {
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    button {
+      color: black;
+    }
+  }
+}
+
+.imgContainer:hover {
+  img {
+    opacity: 0.3;
+  }
+  .middle {
+    opacity: 1;
+  }
+}

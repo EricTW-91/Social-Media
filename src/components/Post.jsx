@@ -3,12 +3,12 @@ import { Card } from 'react-bootstrap';
 import { Context } from './Context';
 
 const Post = () => {
-    const { posts } = useContext(Context);
+    const { users } = useContext(Context);
 
     return (
         <Card>
             <Card.Body>
-                <Card.Title>{ posts[0].title }</Card.Title>
+                <Card.Title>{ users.posts[0].title }</Card.Title>
                 <Card.Img></Card.Img>
                 <Card.Text></Card.Text>
 

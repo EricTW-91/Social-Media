@@ -1,45 +1,102 @@
-import React, { useContext } from 'react'
-import { Context } from './Context'
+import React, { useState, useContext } from 'react';
+import { Context } from './Context';
+import { useHistory } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
+import { v1 as uuidv1 } from 'uuid';
+import './Upload.scss';
 
-const Upload = (props) => {
-    const { posts } = useContext(Context);
+// Transfer the image object to url
+const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    })
+}
 
-    const createPost = e => {
-        e.preventDefault()
+const Upload = () => {
+    const { login, setLogin } = useContext(Context);
+    const [content, setContent] = useState({ title: '', img: '' });
+    const history = useHistory();
 
-        // check for title
-        if (e.target.title.value === '') alert('Please enter a title')
+    const handleOnChange = (e) => {
+        if (e.target.name === 'title') {
+            setContent({...content, title: e.target.value})
+        } else if (e.target.name === 'img') {
+            const file = e.target.files[0];
+            getBase64(file).then(url => {
+                setContent({...content, img: url})
+            })
+        }
+    }
 
-        
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-        alert(e.target.file.value)
+        if (content.title === '' || content.img === '') {
+            alert('Missing something!')
+        } else {
+            let arr = login.user.posts;
+            arr.push({
+                id: uuidv1(),
+                title: content.title,
+                time: '',
+                img: content.img,
+                likeStatus: false,
+                comments: []
+            });
+            setLogin({...login, [login.user.posts]: arr})
+            history.push('/') // Return to the Posts page.
+        }
+
+
+    }
+
+    const handleDelete = () => {
+        setContent({...content, img: ''})
     }
 
     return (
-        <section className="upload-section">
-            <h1>create post</h1>
-
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <form onSubmit={createPost}>
-                            <div className="mb-3">
-                                <input className="form-control" type="text" id="title" name="title" placeholder="enter the title..." />
-                            </div>
-
-                            <div className="mb-3">
-                                <input className="form-control" type="file" id="form-file" name="file" />
-                            </div>
-
-                            <div>
-                                <button type="submit" className="btn btn-primary mb-3">create post</button>
-                            </div>
-                        </form>
+        <>
+            <Form onSubmit={handleSubmit} style={{height:'800px', width: '500px', margin: '5vh auto'}}>
+                <Form.Group controlId='inputTitle'>
+                    <Form.Label>Title of your post:</Form.Label>
+                    <Form.Control
+                        name='title'
+                        type='text'
+                        size='sm'
+                        onChange={handleOnChange}
+                    ></Form.Control>
+                </Form.Group>
+                {content.img === '' ? (
+                    <Form.Group controlId='inputImage'>
+                        <Form.File
+                            name='img'
+                            label='Upload the image here:'
+                            onChange={handleOnChange}
+                        ></Form.File>
+                    </Form.Group>
+                ) : (
+                    <div className='imgContainer'>
+                        <img
+                            src={content.img}
+                            style={{
+                                width: '500px'
+                            }}
+                        ></img>
+                        <div className='middle'>
+                                <Button
+                                    variant='warning'
+                                    onClick={handleDelete}
+                                >Delete</Button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-    )
+                )}
+                <Button type='submit'>Submit</Button>
+            </Form>
+        </>
+     );
 }
-
-export default Upload
+ 
+export default Upload;
